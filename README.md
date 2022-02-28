@@ -10,7 +10,7 @@ npm install
 ```
 
 ## Usage
-After installing the necessary dependencies, the application will be invoked from the command line by entering: `npm start`
+After installing the necessary dependencies, the application will be invoked from the command line by entering: `npm start` <br/>
 The video linked below can help with any further questions you may have regarding the use of the application. <br/>
 https://drive.google.com/file/d/1ZrHuCfHgUb-PAfQCT83WLN7j6a2possp/view 
 
