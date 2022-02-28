@@ -1,6 +1,6 @@
 const db = require('./db/connection');
 const inquirer = require('inquirer');
-const conTable = require('console.table');
+const cTable = require('console.table');
 
 // start DB connection
 db.connect(err => {
@@ -64,9 +64,9 @@ function addEmployeePrompt(roleArray) {
             name: 'manager',
             message: "Who is the employee's manager?",
             choices: [
-                { value: 1, name: "Billie Eilish" },
-                { value: 3, name: "Jennifer Lopez" },
-                { value: 5, name: "Ariana Grande" },
+                { value: 1, name: "Bill Cottentail" },
+                { value: 3, name: "Jen lovas" },
+                { value: 5, name: "Lexi Degos" },
                 { value: null , name: "TBD" }
             ]
         }
@@ -118,6 +118,8 @@ function mainPrompt() {
         }
     ])
         .then((answers) => {
+            // console.log(answers)
+            // console.log(answers.menu)
             switch (answers.menu) {
                 case 'View all departments':
                     displayDepartments()
@@ -195,6 +197,7 @@ function displayEmployees() {
 function addDepartment() {
     addDepartmentPrompt()
         .then(answer => {
+            // console.log(answer.addDepartment)
 
             const sql = `INSERT INTO department (name) VALUES (?)`;
             const params = answer.addDepartment;
@@ -217,6 +220,7 @@ function addRole() {
         if (err) {
             console.log(err);
         }
+        // console.log(rows);
         const departmentArray = [];
 
         for (let i = 0; i < rows.length; i++) {
@@ -226,6 +230,8 @@ function addRole() {
             }
             departmentArray.push(newRows)
         }
+
+        // console.log(departmentArray)
 
         addRolePrompt(departmentArray)
             .then(answer => {
@@ -252,6 +258,7 @@ function addEmployee() {
         if (err) {
             console.log(err);
         }
+        // console.log(rows);
         const roleArray = [];
 
         for (let i = 0; i < rows.length; i++) {
@@ -261,6 +268,7 @@ function addEmployee() {
             }
             roleArray.push(newRows)
         }
+        // console.log(roleArray)
 
         addEmployeePrompt(roleArray)
             .then(answer => {
@@ -286,6 +294,7 @@ function updateEmployeeRole() {
         if (err) {
             console.log(err);
         }
+        // console.log(rows);
         const employeeArray = [];
 
         for (let i = 0; i < rows.length; i++) {
@@ -295,6 +304,7 @@ function updateEmployeeRole() {
             }
             employeeArray.push(newRows)
         }
+        // console.log(employeeArray)
 
         updateEmployeePrompt(employeeArray)
             .then(answer => {
